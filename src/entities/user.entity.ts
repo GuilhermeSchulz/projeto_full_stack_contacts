@@ -27,6 +27,6 @@ export class User {
     hashPassword(){
         this.password = hashSync(this.password, 10)
     }
-    @OneToMany(() => Contacts, (contact) => contact.user)
+    @OneToMany(() => Contacts, (contact) => contact.user, { eager: true })
     contacts: Contacts[]
 }

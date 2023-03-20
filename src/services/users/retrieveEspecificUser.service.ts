@@ -11,6 +11,7 @@ const allUsers = await userRepository.findOneBy( { id: idUser })
 if (!allUsers) {
     throw new AppError("user not found", 404)
 }
+console.log(allUsers)
 const validatedUser = await userWithoutPasswordSerializer.validate(allUsers, { stripUnknown: true})
 
 return validatedUser
