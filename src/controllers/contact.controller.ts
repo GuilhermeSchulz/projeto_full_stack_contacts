@@ -7,13 +7,15 @@ import { retrieveEspecificContactsService } from "../services/contacts/retrieveE
 import { updateContactService } from "../services/contacts/updateContacts.service";
 
 export const createContactController = async (req: Request, res: Response) => {
+    const userData = req.user
     const contactData = req.body
-    const contact = await createContactService(contactData)
+    const contact = await createContactService(contactData, userData)
     return res.status(201).json(contact);
   };
 
 export const retrieveContactsController = async (req: Request, res: Response) => {
-    const contacts = await retrieveContactsService()
+    const userId = req.user.id
+    const contacts = await retrieveContactsService(userId)
     return res.status(200).json(contacts);
   };
 

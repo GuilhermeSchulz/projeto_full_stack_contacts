@@ -15,7 +15,7 @@ const contactRepository = AppDataSource.getRepository(Contacts);
   }
   await contactRepository
   .createQueryBuilder()
-  .softDelete()
+  .delete()
   .where("id = :id", { id: contactId })
   .execute();
 

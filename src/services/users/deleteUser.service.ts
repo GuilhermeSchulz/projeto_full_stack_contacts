@@ -14,7 +14,7 @@ const userRepository = AppDataSource.getRepository(User);
   }
   await userRepository
   .createQueryBuilder()
-  .softDelete()
+  .delete()
   .where("id = :id", { id: userId })
   .execute();
 
