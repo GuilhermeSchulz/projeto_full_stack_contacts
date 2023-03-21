@@ -11,9 +11,11 @@ export class Contacts{
     email: string
     @Column({length: 11})
     phone: string
+    @Column({nullable: true})
+    avatar: string
     @CreateDateColumn()
     createdAt: Date
-    @ManyToOne(() => User, (user) => user.contacts)
+    @ManyToOne(() => User, (user) => user.contacts,{onDelete: "CASCADE"})
     @JoinColumn()
     user: User;
 }
