@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyles = createGlobalStyle`
 *{
@@ -11,6 +11,9 @@ export const GlobalStyles = createGlobalStyle`
 button{
     cursor:pointer;
     transition: 0.5s;
+}
+a{
+  cursor:pointer
 }
 
 :root{

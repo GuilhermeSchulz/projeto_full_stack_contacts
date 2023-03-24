@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
 export const Button = styled.button`
-  height: 78px;
+  height: 50px;
   border-radius: 8px;
   border: 1px solid var(--color-primary-1);
   color: var(--color-primary-1);
-  font-size: var(--text-size-1);
+  font-size: var(--text-size-2);
   padding: 10px 20px;
-
+  width: 90%;
   &&.button__color--yellow {
     background-color: var(--color-primary-2);
 
@@ -26,16 +26,4 @@ export const Button = styled.button`
     }
   }
 
-  &&.button__size--large {
-    width: 100%;
-    max-width: 500px;
-  }
-  &&.button__size--medium {
-    width: 100%;
-    max-width: 350px;
-  }
-  &&.button__size--small {
-    width: 100%;
-    max-width: 120px;
-  }
 `;
