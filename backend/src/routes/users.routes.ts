@@ -13,8 +13,22 @@ import { verifyTokenMiddleware } from "../middlewares/verifyToken.middleware";
 
 export const userRoutes = Router();
 
-userRoutes.post("", verifyDataMiddleware(userSerializer),createUserController);
-userRoutes.get("",verifyTokenMiddleware,verifyUser, retrieveUsersController);
-userRoutes.get("/:id",verifyTokenMiddleware,verifyUser, retrieveEspecificUserController);
-userRoutes.patch("/:id",verifyTokenMiddleware,verifyUser, updateUserController);
-userRoutes.delete("/:id",verifyTokenMiddleware,verifyUser, deleteUserController);
+userRoutes.post("", verifyDataMiddleware(userSerializer), createUserController);
+userRoutes.get(
+  "",
+  verifyTokenMiddleware,
+  verifyUser,
+  retrieveEspecificUserController
+);
+userRoutes.patch(
+  "/:id",
+  verifyTokenMiddleware,
+  verifyUser,
+  updateUserController
+);
+userRoutes.delete(
+  "/:id",
+  verifyTokenMiddleware,
+  verifyUser,
+  deleteUserController
+);
