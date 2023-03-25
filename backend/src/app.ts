@@ -1,6 +1,6 @@
 import "express-async-errors";
 import "reflect-metadata";
-import express from "express";
+import express, { Request, Response } from "express";
 import { userRoutes } from "./routes/users.routes";
 import { loginRoutes } from "./routes/login.routes";
 import { contactsRoutes } from "./routes/contacts.routes";
@@ -13,4 +13,8 @@ app.use("/users", userRoutes);
 app.use("/login", loginRoutes);
 app.use("/contacts", contactsRoutes);
 
+app.use(express.static("Docs"));
+app.use("/", (req: Request, res: Response) => {
+  res.render("index.html");
+});
 export default app;
