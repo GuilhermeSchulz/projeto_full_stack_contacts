@@ -24,3 +24,15 @@ export const schemaRegister = yup.object().shape({
     name: yup.string().required("Please enter your name"),
     phone: yup.string().required("Please enter your phone number"),
 });
+export const schemaUpdate = yup.object().shape({
+    email: yup.string().notRequired().email("Invalid email"),
+    password: yup
+        .string()
+        .notRequired()
+        .matches(
+            /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/,
+            "Its necessary to include a lowercase letter, an uppercase letter, a number and a special character."
+        ),
+    name: yup.string().notRequired(),
+    phone: yup.string().notRequired(),
+})

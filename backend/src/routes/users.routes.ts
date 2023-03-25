@@ -7,7 +7,7 @@ import {
 } from "../controllers/user.controller";
 import { Router } from "express";
 import { verifyDataMiddleware } from "../middlewares/verifyData.middleware";
-import { userSerializer } from "../schemas/users.schemas";
+import { userSerializer, userUpdateSerializer } from "../schemas/users.schemas";
 import { verifyUser } from "../middlewares/verifyUser.middleware";
 import { verifyTokenMiddleware } from "../middlewares/verifyToken.middleware";
 
@@ -22,6 +22,7 @@ userRoutes.get(
 );
 userRoutes.patch(
   "/:id",
+  verifyDataMiddleware(userUpdateSerializer),
   verifyTokenMiddleware,
   verifyUser,
   updateUserController

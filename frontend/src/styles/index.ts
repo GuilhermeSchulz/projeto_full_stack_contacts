@@ -8,6 +8,10 @@ export const GlobalStyles = createGlobalStyle`
     list-style:none;
     box-sizing: border-box;
 }
+body.modal-open {
+  overflow: hidden; /* see "modal-open" in Modal.tsx */
+}
+
 button{
     cursor:pointer;
     transition: 0.5s;

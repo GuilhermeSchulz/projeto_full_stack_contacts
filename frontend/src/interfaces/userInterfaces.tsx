@@ -15,6 +15,7 @@ export interface IUserReturn {
     name: string;
     email: string;
     phone: string;
+    id: string;
 }
 
 export interface IUserContext {
@@ -25,4 +26,8 @@ export interface IUserContext {
     onSubmitLogin: (data: FieldValues) => void;
     login: boolean;
     setLogin: React.Dispatch<React.SetStateAction<boolean>>
+    profile: boolean;
+    setProfile: React.Dispatch<React.SetStateAction<boolean>>
+    onSubmitUpdate: (data: FieldValues) => void;
+    onSubmitDelete: (data: FieldValues) => void;
 }

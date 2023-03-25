@@ -53,7 +53,7 @@ export const FormLogin = () => {
                                     <input type="text" placeholder="Insert your phone number" {...register("phone")}></input>
                                     <span className="error">{errors.phone?.message}</span>
                                 </StyledFieldInput>
-                                <Button className="button__color--yellow ">Login</Button>
+                                <Button className="button__color--yellow ">Register</Button>
                             </form>
                             <span>Already have an account? <a onClick={HandleRegister}>Back to Login!</a></span>
                         </Container>
