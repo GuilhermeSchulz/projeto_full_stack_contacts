@@ -1,4 +1,2 @@
-node_modules/
-dist/
-**lock**
-.env
+node_modules
+node_modules

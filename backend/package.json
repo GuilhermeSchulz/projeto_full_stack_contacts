@@ -9,6 +9,7 @@
     "test": "cross-env NODE_ENV=test SECRET_KEY=secret_key jest  --verbose --runInBand"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.13",
     "@types/express": "^4.17.13",
     "@types/jest": "^28.1.4",
     "@types/node": "^16.11.10",
@@ -30,7 +31,6 @@
     "express-async-errors": "^3.1.1",
     "jsonwebtoken": "^8.5.1",
     "pg": "^8.8.0",
-    "react-router-dom": "^6.9.0",
     "reflect-metadata": "^0.1.13",
     "typeorm": "0.3.10",
     "yup": "^0.32.11"
