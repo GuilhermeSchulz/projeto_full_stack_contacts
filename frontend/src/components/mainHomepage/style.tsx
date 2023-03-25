@@ -13,7 +13,7 @@ export const StyledMain = styled.main`
         width: 40%;
         height: 100%;
         padding: 1rem;
-        padding-top: 80px;
+        padding-top: 150px;
         text-align: center;
         h1{
             font-size: var(--title-size-1);

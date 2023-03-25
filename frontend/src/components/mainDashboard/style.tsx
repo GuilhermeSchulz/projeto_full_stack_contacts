@@ -34,4 +34,7 @@ export const StyledMainDash = styled.main`
       }
     }
   }
+  @media(max-width: 768px){
+    background-position: right;
+  }
 `;

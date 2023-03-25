@@ -13,6 +13,7 @@ export const StyledList = styled.ul`
   flex-wrap: wrap;
   gap: 1rem;
   overflow-y: auto;
+  max-width: 1400px;
   li {
     border: 2px solid var(--color-primary-2);
     padding: 0.5rem;
