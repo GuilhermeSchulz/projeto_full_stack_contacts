@@ -36,26 +36,26 @@ export const FormLogin = () => {
                                 <StyledFieldInput>
                                     Name:
                                     <input type="text" placeholder="Insert your name" {...register("name")}></input>
-                                    <span className="error">{errors.name?.message}</span>
+                                    <p className="error">{errors.name?.message}</p>
                                 </StyledFieldInput>
                                 <StyledFieldInput>
                                     Email:
                                     <input type="email" placeholder="Insert your email" {...register("email")}></input>
-                                    <span className="error">{errors.email?.message}</span>
+                                    <p className="error">{errors.email?.message}</p>
                                 </StyledFieldInput>
                                 <StyledFieldInput>
                                     Password:
                                     <input type="Password" placeholder="Insert your password" {...register("password")}></input>
-                                    <span className="error">{errors.password?.message}</span>
+                                    <p className="error">{errors.password?.message}</p>
                                 </StyledFieldInput>
                                 <StyledFieldInput>
                                     Phone:
                                     <input type="text" placeholder="Insert your phone number" {...register("phone")}></input>
-                                    <span className="error">{errors.phone?.message}</span>
+                                    <p className="error">{errors.phone?.message}</p>
                                 </StyledFieldInput>
                                 <Button className="button__color--yellow ">Register</Button>
                             </form>
-                            <span>Already have an account? <a onClick={HandleRegister}>Back to Login!</a></span>
+                            <p>Already have an account? <a onClick={HandleRegister}>Back to Login!</a></p>
                         </Container>
                     )
                     :
@@ -65,16 +65,16 @@ export const FormLogin = () => {
                             <StyledFieldInput>
                                 Email:
                                 <input type="email" placeholder="Insert your email" {...register("email")}></input>
-                                <span className="error">{errors.email?.message}</span>
+                                <p className="error">{errors.email?.message}</p>
                             </StyledFieldInput>
                             <StyledFieldInput>
                                 Password:
                                 <input type="Password" placeholder="Insert your password" {...register("password")}></input>
-                                <span className="error">{errors.password?.message}</span>
+                                <p className="error">{errors.password?.message}</p>
                             </StyledFieldInput>
                             <Button className="button__color--yellow ">Login</Button>
                         </form>
-                        <span>Doesnt have an account? <a onClick={HandleRegister}>Register now!</a></span>
+                        <p>Doesnt have an account? <a onClick={HandleRegister}>Register now!</a></p>
                     </Container>)
 
             }

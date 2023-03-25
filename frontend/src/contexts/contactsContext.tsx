@@ -1,19 +1,22 @@
-import { createContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { FieldValues } from "react-hook-form";
 import { toast } from "react-toastify";
 import { IContactContext, IContactReturn } from "../interfaces/contactsInterface";
 import { instance } from "../services/instance";
-import { iErrorAxios } from "./userContext";
+import { iErrorAxios, UserContext } from "./userContext";
 interface iProviderProps {
     children: React.ReactNode;
 }
 
-export const UserContext = createContext({} as IContactContext);
+export const ContactsContext = createContext({} as IContactContext);
 
 export const ContactsProvider = ({ children }: iProviderProps) => {
     const [contacts, setContacts] = useState<IContactReturn[] | []>([])
     const [addContact, setAddContact] = useState(false)
     const [updateContact, setUpdateContact] = useState(false)
+    const { refresh } = useContext(UserContext)
+    const [load, setLoad] = useState(false)
+    console.log(refresh)
 
     const onSubmitContact = (data: FieldValues) => createContact(data)
     const onDeleteContact = (id: string) => deleteSpecificContact(id)
@@ -58,9 +61,13 @@ export const ContactsProvider = ({ children }: iProviderProps) => {
                 .patch(`contacts/${id}`, data)
                 .then((response) => {
                     getContacts()
+                    toast.success("Contact Updated Successfully")
+                    setUpdateContact(false)
                 })
-                .catch((err) =>
+                .catch((err) => {
+                    toast.error("Failed to update contact")
                     console.log(err)
+                }
                 )
         }
     }
@@ -71,16 +78,23 @@ export const ContactsProvider = ({ children }: iProviderProps) => {
             instance
                 .delete(`contacts/${id}`)
                 .then((response) => {
+                    toast.success("Contacts deleted successfully")
                     getContacts()
                 })
-                .catch((err) =>
+                .catch((err) => {
+                    toast.error("Failed to delete contact")
                     console.log(err)
+                }
                 )
         }
     }
+    useEffect(() => {
+        console.log(contacts)
+        getContacts()
+    }, [refresh])
 
     return (
-        <UserContext.Provider value={{
+        <ContactsContext.Provider value={{
             contacts,
             setContacts,
             addContact,
@@ -92,6 +106,6 @@ export const ContactsProvider = ({ children }: iProviderProps) => {
             onUpdateContact
         }}>
             {children}
-        </UserContext.Provider>
+        </ContactsContext.Provider>
     )
 }

@@ -6,7 +6,7 @@ export const Background = styled.div`
   align-items: center;
   justify-content: center;
   background-color: var(--black-opacity);
-  z-index: 1;
+  z-index: 5;
   position: fixed;
   top: 0;
 `;
@@ -24,11 +24,12 @@ export const ModalStyled = styled.div`
   &&::-webkit-scrollbar {
     display: none;
   }
-
-  @media (max-width: 900px) {
-    flex-direction: column;
+  form{
     overflow-y: auto;
+  }
+  @media (max-width: 768px) {
+    width: 95%;
+    flex-direction: column;
     height: 100%;
-    width: min-content;
   }
 `;

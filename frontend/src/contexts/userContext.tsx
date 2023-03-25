@@ -169,7 +169,8 @@ export const UserProvider = ({ children }: iProviderProps) => {
                 onSubmitUpdate,
                 setProfile,
                 profile,
-                onSubmitDelete
+                onSubmitDelete,
+                refresh
             }}
         >
             {children}

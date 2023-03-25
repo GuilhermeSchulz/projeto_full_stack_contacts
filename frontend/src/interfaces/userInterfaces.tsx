@@ -30,4 +30,5 @@ export interface IUserContext {
     setProfile: React.Dispatch<React.SetStateAction<boolean>>
     onSubmitUpdate: (data: FieldValues) => void;
     onSubmitDelete: (data: FieldValues) => void;
+    refresh: boolean;
 }
