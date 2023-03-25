@@ -1,4 +1,6 @@
 import { ToastContainer } from "react-toastify"
+import { ContactsProvider } from "./contexts/contactsContext"
+import { UserProvider } from "./contexts/userContext"
 import { RoutesMain } from "./routes"
 import { GlobalStyles } from "./styles"
 
@@ -7,9 +9,15 @@ function App() {
 
   return (
     <>
-      <GlobalStyles />
-      <RoutesMain />
-      <ToastContainer />
+      <UserProvider>
+        <ContactsProvider>
+
+
+          <GlobalStyles />
+          <RoutesMain />
+          <ToastContainer />
+        </ContactsProvider>
+      </UserProvider>
     </>
 
   )

@@ -8,6 +8,10 @@ export const GlobalStyles = createGlobalStyle`
     list-style:none;
     box-sizing: border-box;
 }
+body.modal-open {
+  overflow: hidden; /* see "modal-open" in Modal.tsx */
+}
+
 button{
     cursor:pointer;
     transition: 0.5s;
@@ -44,6 +48,7 @@ a{
 
     --box-shadow: 0px 4px 10px 6px rgba(0, 0, 0, 0.25);
     --button-hover-shadow: 0px 1px 29px 17px #EE7C77;
+    --black-opacity: #00000050
 }
 
 ::-webkit-scrollbar {
