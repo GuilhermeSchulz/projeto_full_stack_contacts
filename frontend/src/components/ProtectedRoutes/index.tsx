@@ -1,11 +1,11 @@
 
+import { useContext } from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
+import { UserContext } from '../../contexts/userContext';
 
 
-// export const ProtectedRoute = () => {
+export const ProtectedRoute = () => {
+    const { user } = useContext(UserContext);
 
-//   if (!loading) {
-//     return null;
-//   }
-//   return user ? <Outlet /> : <Navigate to={'/'} replace />;
-// };
+    return user ? <Outlet /> : <Navigate to={'/'} replace />;
+};
