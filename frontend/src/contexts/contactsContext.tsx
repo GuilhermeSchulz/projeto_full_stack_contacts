@@ -89,7 +89,7 @@ export const ContactsProvider = ({ children }: iProviderProps) => {
         }
     }
     useEffect(() => {
-        console.log(contacts)
+
         getContacts()
     }, [refresh])
 

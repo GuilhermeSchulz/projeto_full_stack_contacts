@@ -22,7 +22,7 @@ export const UserProvider = ({ children }: iProviderProps) => {
     const [login, setLogin] = useState(true);
     const [user, setUser] = useState<IUserReturn | null>(null);
     const [profile, setProfile] = useState(false);
-
+    const [token, setToken] = useState(localStorage.getItem("TOKEN@TRUETIES") || "")
     const loginSuccess = () => {
         toast.success("Login Successful", {
             position: "top-center",
@@ -79,12 +79,13 @@ export const UserProvider = ({ children }: iProviderProps) => {
         instance
             .post<iAxiosData>("login", obj)
             .then((response) => {
-                window.localStorage.setItem("TOKEN@TRUETIES", response.data.token);
+                const { token } = response.data
+                window.localStorage.setItem("TOKEN@TRUETIES", token);
 
-                const token = window.localStorage.getItem("TOKEN@TRUETIES");
+                setToken(token)
                 loginSuccess();
                 setRefresh(true);
-                token ? navigate("/dashboard") : <></>;
+                navigate("/dashboard");
             })
             .catch((err: iErrorAxios) => {
                 loginError();
@@ -105,8 +106,7 @@ export const UserProvider = ({ children }: iProviderProps) => {
             });
     };
     const editProfile = (obj: FieldValues) => {
-        const token = localStorage.getItem("TOKEN@TRUETIES");
-        console.log(token)
+
         if (token) {
             instance.defaults.headers.authorization = `Bearer ${token}`;
             instance
@@ -122,8 +122,7 @@ export const UserProvider = ({ children }: iProviderProps) => {
         }
     };
     const deleteProfile = () => {
-        const token = localStorage.getItem("TOKEN@TRUETIES");
-        console.log(token)
+
         if (token) {
             instance.defaults.headers.authorization = `Bearer ${token}`;
             instance
@@ -141,21 +140,21 @@ export const UserProvider = ({ children }: iProviderProps) => {
 
     useEffect(() => {
         const loadUser = async () => {
-            const token = localStorage.getItem("TOKEN@TRUETIES");
+
             if (token) {
                 try {
                     instance.defaults.headers.authorization = `Bearer ${token}`;
                     const { data } = await instance.get<IUserReturn>("users");
                     setUser(data);
                     setRefresh(false);
-                } catch (error) {
-                    console.log(error);
+                } catch (err) {
+                    console.log(err);
                     localStorage.clear();
                 }
             }
         };
         loadUser();
-    }, [refresh]);
+    }, [token]);
     return (
         <UserContext.Provider
             value={{
@@ -170,7 +169,8 @@ export const UserProvider = ({ children }: iProviderProps) => {
                 setProfile,
                 profile,
                 onSubmitDelete,
-                refresh
+                refresh,
+                token
             }}
         >
             {children}

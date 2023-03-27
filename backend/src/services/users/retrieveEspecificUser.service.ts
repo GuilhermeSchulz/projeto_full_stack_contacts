@@ -1,18 +1,22 @@
-import { userWithoutPasswordSerializer } from './../../schemas/users.schemas';
-import { IUserReturn } from './../../interfaces/users.interfaces';
-import AppDataSource from '../../data-source'
-import { User } from '../../entities/user.entity';
-import { AppError } from '../../errors/errors';
+import { userWithoutPasswordSerializer } from "./../../schemas/users.schemas";
+import { IUserReturn } from "./../../interfaces/users.interfaces";
+import AppDataSource from "../../data-source";
+import { User } from "../../entities/user.entity";
+import { AppError } from "../../errors/errors";
 
-export const retrieveEspecificUserService = async (idUser: string): Promise<IUserReturn> => {
-const userRepository = AppDataSource.getRepository(User)
-const allUsers = await userRepository.findOneBy( { id: idUser })
+export const retrieveEspecificUserService = async (
+  idUser: string
+): Promise<IUserReturn> => {
+  const userRepository = AppDataSource.getRepository(User);
+  const allUsers = await userRepository.findOneBy({ id: idUser });
 
-if (!allUsers) {
-    throw new AppError("user not found", 404)
-}
-console.log(allUsers)
-const validatedUser = await userWithoutPasswordSerializer.validate(allUsers, { stripUnknown: true})
+  if (!allUsers) {
+    throw new AppError("user not found", 404);
+  }
 
-return validatedUser
+  const validatedUser = await userWithoutPasswordSerializer.validate(allUsers, {
+    stripUnknown: true,
+  });
+
+  return validatedUser;
 };

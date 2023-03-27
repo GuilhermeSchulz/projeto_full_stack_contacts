@@ -5,7 +5,7 @@ import { UserContext } from '../../contexts/userContext';
 
 
 export const ProtectedRoute = () => {
-    const { user } = useContext(UserContext);
+    const { token } = useContext(UserContext);
 
-    return user ? <Outlet /> : <Navigate to={'/'} replace />;
+    return token ? <Outlet /> : <Navigate to={'/'} replace />;
 };

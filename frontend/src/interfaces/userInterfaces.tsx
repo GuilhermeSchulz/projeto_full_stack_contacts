@@ -31,4 +31,5 @@ export interface IUserContext {
     onSubmitUpdate: (data: FieldValues) => void;
     onSubmitDelete: (data: FieldValues) => void;
     refresh: boolean;
+    token: string;
 }
