@@ -21,6 +21,7 @@
     <li> Acesse cada uma das pastas com: "cd frontend";
     <li> Rodar o comando "yarn" ou "npm install" para instalar as dependências; 
     <li> Rodar o comando "yarn start" ou "npm run dev" para iniciar o servidor. Será aberta automaticamente uma aba no navegador, e nela roda o front end da apliação.
+    <li> Acesse o link disponibilizado pelo vite, ou pelo: http://localhost:5173/
     <li> Com a API rodando e o utilizando o comando acima, estará funcionando com a integração de backend.
 </ol>
 
