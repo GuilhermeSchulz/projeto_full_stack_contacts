@@ -8,7 +8,7 @@
     <li> Criar um banco de dados local do tipo PostgreSQL; 
     <li> Criar um arquivo .env dentro desse repositorio a partir de uma cópia do .env.example, e preencher as chaves com as configurações da sua maquina e do banco de dados.
     <li> Em sequida, rodar o comando "yarn typeorm migration:run -d src/data-source.ts" para criar as tabelas e o usuário administrador no banco automaticamente atraves da ferramenta TypeORM.
-    <li> E por fim, rodar o comando "yarn dev" pra subir o servidor localmente da API. O servidor vai estar na rota <a>http://localhost:3000</a> e voce verá no terminal a mensagem "Servidor executando" 
+    <li> E por fim, rodar o comando "yarn dev" ou "npm run dev" pra subir o servidor localmente da API. O servidor vai estar na rota <a>http://localhost:3000</a> e voce verá no terminal a mensagem "Servidor executando" 
     <li> Para acessar a documentação da api, acesse pelo navegador o mesmo link anterior, <a>http://localhost:3000</a>!
     <li> Agora é com o front-end
 </ol>
