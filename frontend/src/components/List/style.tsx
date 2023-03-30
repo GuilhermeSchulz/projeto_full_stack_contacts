@@ -34,5 +34,8 @@ align-items: center;
       height: 150px;
       object-fit: cover;
     }
+    p{
+      height: 30px;
+    }
   }
 `;

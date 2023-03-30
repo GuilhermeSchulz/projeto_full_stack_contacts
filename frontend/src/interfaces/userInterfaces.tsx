@@ -32,4 +32,5 @@ export interface IUserContext {
     onSubmitDelete: (data: FieldValues) => void;
     refresh: boolean;
     token: string;
+    setToken: React.Dispatch<React.SetStateAction<string>>
 }

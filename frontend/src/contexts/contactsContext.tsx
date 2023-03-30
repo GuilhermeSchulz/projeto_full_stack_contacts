@@ -14,6 +14,7 @@ export const ContactsProvider = ({ children }: iProviderProps) => {
     const [contacts, setContacts] = useState<IContactReturn[] | []>([])
     const [addContact, setAddContact] = useState(false)
     const [updateContact, setUpdateContact] = useState(false)
+    const [contact, setContact] = useState<IContactReturn | null>(null)
     const { refresh } = useContext(UserContext)
     const [load, setLoad] = useState(false)
     console.log(refresh)
@@ -89,7 +90,6 @@ export const ContactsProvider = ({ children }: iProviderProps) => {
         }
     }
     useEffect(() => {
-
         getContacts()
     }, [refresh])
 
@@ -103,7 +103,10 @@ export const ContactsProvider = ({ children }: iProviderProps) => {
             setUpdateContact,
             onSubmitContact,
             onDeleteContact,
-            onUpdateContact
+            onUpdateContact,
+            contact,
+            setContact,
+
         }}>
             {children}
         </ContactsContext.Provider>

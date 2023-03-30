@@ -9,9 +9,10 @@ export const Header = () => {
     const navigate = useNavigate()
     const exitButton = () => {
         window.localStorage.clear();
+        setToken("")
         navigate("/")
     };
-    const { setProfile } = useContext(UserContext)
+    const { setProfile, setToken } = useContext(UserContext)
     const handleProfile = () => {
         setProfile(true)
     }

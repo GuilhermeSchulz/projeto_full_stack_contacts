@@ -4,14 +4,14 @@ export interface IContacts {
     name: string;
     email: string;
     phone: string;
-    avatar: string | null;
+    avatar: string;
 }
 
 export interface IContactReturn {
     name: string;
     email: string;
     phone: string;
-    avatar: string | null;
+    avatar: string;
     id: string;
 }
 
@@ -25,4 +25,6 @@ export interface IContactContext {
     setAddContact: React.Dispatch<React.SetStateAction<boolean>>;
     updateContact: boolean;
     setUpdateContact: React.Dispatch<React.SetStateAction<boolean>>;
+    contact: IContactReturn | null;
+    setContact: React.Dispatch<React.SetStateAction<IContactReturn | null>>;
 }

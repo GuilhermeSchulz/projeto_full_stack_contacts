@@ -20,23 +20,27 @@ import imageNotFound from "../assets/img/MdImageNotSupported.svg"
 import { Background } from "../components/modal/style";
 
 export const Dashboard = () => {
-  const { profile, onSubmitUpdate, setProfile, onSubmitDelete } = useContext(UserContext);
-  const { contacts, addContact, setAddContact, updateContact, setUpdateContact, onSubmitContact, onUpdateContact, onDeleteContact } = useContext(ContactsContext)
+  const { profile, onSubmitUpdate, setProfile, onSubmitDelete, user } = useContext(UserContext);
+  const { contacts, addContact, setAddContact, updateContact, setUpdateContact, onSubmitContact, onUpdateContact, onDeleteContact, setContact, contact } = useContext(ContactsContext)
   const [specificUser, setSpecificUser] = useState("")
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<IUser & IContacts>({
     resolver: profile ? yupResolver(schemaUpdate) : addContact ? yupResolver(schemaContact) : yupResolver(schemaUpdateContact)
   });
   const closeModalProfile = () => {
+    reset()
     setProfile(!profile);
   };
   const handleEditModal = () => {
+    reset()
     setUpdateContact(!updateContact)
   }
   const handleAddContact = () => {
+    reset()
     setAddContact(!addContact)
   }
   return (
@@ -55,6 +59,7 @@ export const Dashboard = () => {
             <p>Phone: {contact.phone}</p>
             <Button className="button__color--yellow" onClick={() => {
               handleEditModal()
+              setContact(contact)
               setSpecificUser(contact.id)
             }}>Edit</Button>
             <Button className="button__color--purple" onClick={() => onDeleteContact(contact.id)}>Delete</Button>
@@ -72,6 +77,7 @@ export const Dashboard = () => {
                 <input
                   type="text"
                   placeholder="Insert your name"
+                  defaultValue={user?.name}
                   {...register("name")}
                 ></input>
                 <span className="error">{errors.name?.message}</span>
@@ -80,25 +86,18 @@ export const Dashboard = () => {
                 Email:
                 <input
                   type="email"
+                  defaultValue={user?.email}
                   placeholder="Insert your email"
                   {...register("email")}
                 ></input>
                 <span className="error">{errors.email?.message}</span>
               </StyledFieldInput>
               <StyledFieldInput>
-                Password:
-                <input
-                  type="Password"
-                  placeholder="Insert your password"
-                  {...register("password")}
-                ></input>
-                <span className="error">{errors.password?.message}</span>
-              </StyledFieldInput>
-              <StyledFieldInput>
                 Phone:
                 <input
                   type="text"
                   placeholder="Insert your phone number"
+                  defaultValue={user?.phone}
                   {...register("phone")}
                 ></input>
                 <span className="error">{errors.phone?.message}</span>
@@ -179,6 +178,7 @@ export const Dashboard = () => {
                   <input
                     type="text"
                     placeholder="Insert your contact name"
+                    defaultValue={contact?.name}
                     {...register("name")}
                   ></input>
                   <span className="error">{errors.name?.message}</span>
@@ -188,6 +188,7 @@ export const Dashboard = () => {
                   <input
                     type="email"
                     placeholder="Insert your contact email"
+                    defaultValue={contact?.email}
                     {...register("email")}
                   ></input>
                   <span className="error">{errors.email?.message}</span>
@@ -197,15 +198,17 @@ export const Dashboard = () => {
                   <input
                     type="text"
                     placeholder="Insert your contact phone number"
+                    defaultValue={contact?.phone}
                     {...register("phone")}
                   ></input>
                   <span className="error">{errors.phone?.message}</span>
                 </StyledFieldInput>
                 <StyledFieldInput>
-                  Avatr:
+                  Avatar:
                   <input
                     type="text"
                     placeholder="Insert your contact avatar"
+                    defaultValue={contact?.avatar}
                     {...register("avatar")}
                   ></input>
                   <span className="error">{errors.avatar?.message}</span>

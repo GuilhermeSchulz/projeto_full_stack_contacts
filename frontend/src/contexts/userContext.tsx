@@ -113,6 +113,7 @@ export const UserProvider = ({ children }: iProviderProps) => {
                 .patch<IUser>(`users/${user?.id}`, obj)
                 .then((response) => {
                     toast.success("User updated successfully");
+                    setUser(response.data)
                     setProfile(false);
                 })
                 .catch((err: iErrorAxios) => {
@@ -170,7 +171,8 @@ export const UserProvider = ({ children }: iProviderProps) => {
                 profile,
                 onSubmitDelete,
                 refresh,
-                token
+                token,
+                setToken
             }}
         >
             {children}
