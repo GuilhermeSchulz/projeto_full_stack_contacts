@@ -17,7 +17,6 @@ export const ContactsProvider = ({ children }: iProviderProps) => {
     const [contact, setContact] = useState<IContactReturn | null>(null)
     const { refresh } = useContext(UserContext)
     const [load, setLoad] = useState(false)
-    console.log(refresh)
 
     const onSubmitContact = (data: FieldValues) => createContact(data)
     const onDeleteContact = (id: string) => deleteSpecificContact(id)
